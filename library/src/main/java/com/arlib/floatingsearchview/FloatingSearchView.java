@@ -214,7 +214,7 @@ public class FloatingSearchView extends FrameLayout {
      *
      * @param mListener listener to use
      */
-    public void setFloatingSearchViewListener(OnOverFlowMenuInflatedListener mListener) {
+    public void setOnOverFlowMenulistener(OnOverFlowMenuInflatedListener mListener) {
         this.mOnOverFlowMenuInflatedListener = mListener;
     }
 
