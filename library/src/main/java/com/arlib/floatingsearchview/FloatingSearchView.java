@@ -205,7 +205,7 @@ public class FloatingSearchView extends FrameLayout {
     /**
      * Interface to get menuview on inflation
      */
-    private interface OnOverFlowMenuInflatedListener {
+    public interface OnOverFlowMenuInflatedListener {
         MenuView onOverFlowMenuInflated(MenuView menuView);
     }
 
