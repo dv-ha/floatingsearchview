@@ -200,6 +200,24 @@ public class FloatingSearchView extends FrameLayout {
     private OnSuggestionsListHeightChanged mOnSuggestionsListHeightChanged;
     private long mSuggestionSectionAnimDuration;
     private OnClearSearchActionListener mOnClearSearchActionListener;
+    private OnOverFlowMenuInflatedListener mOnOverFlowMenuInflatedListener;
+
+    /**
+     * Interface to get menuview on inflation
+     */
+    private interface OnOverFlowMenuInflatedListener {
+        MenuView onOverFlowMenuInflated(MenuView menuView);
+    }
+
+    /**
+     * Set listener from fragment or activity
+     *
+     * @param mListener listener to use
+     */
+    public void setFloatingSearchViewListener(OnOverFlowMenuInflatedListener mListener) {
+        this.mOnOverFlowMenuInflatedListener = mListener;
+    }
+
 
     //An interface for implementing a listener that will get notified when the suggestions
     //section's height is set. This is to be used internally only.
@@ -681,9 +699,9 @@ public class FloatingSearchView extends FrameLayout {
                 } else {
                     switch (mLeftActionMode) {
                         case LEFT_ACTION_MODE_SHOW_HAMBURGER:
-                            if(mLeftMenuClickListener != null){
+                            if (mLeftMenuClickListener != null) {
                                 mLeftMenuClickListener.onClick(mLeftAction);
-                            }else {
+                            } else {
                                 toggleLeftMenu();
                             }
                             break;
@@ -780,7 +798,7 @@ public class FloatingSearchView extends FrameLayout {
      *
      * @return
      */
-    public List<MenuItemImpl> getCurrentMenuItems(){
+    public List<MenuItemImpl> getCurrentMenuItems() {
         return mMenuView.getCurrentMenuItems();
     }
 
@@ -1065,6 +1083,7 @@ public class FloatingSearchView extends FrameLayout {
         if (mIsFocused) {
             mMenuView.hideIfRoomItems(false);
         }
+        mOnOverFlowMenuInflatedListener.onOverFlowMenuInflated(mMenuView);
     }
 
     private int actionMenuAvailWidth() {

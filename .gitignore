@@ -10,3 +10,6 @@
 /notes
 *.iml
 **/build
+
+.idea/instapk.xml
+instapk.log*
