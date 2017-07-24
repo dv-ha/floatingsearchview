@@ -214,7 +214,7 @@ public class FloatingSearchView extends FrameLayout {
      *
      * @param mListener listener to use
      */
-    public void setOnOverFlowMenulistener(OnOverFlowMenuInflatedListener mListener) {
+    public void setOnOverFlowMenuListener(OnOverFlowMenuInflatedListener mListener) {
         this.mOnOverFlowMenuInflatedListener = mListener;
     }
 
@@ -1083,7 +1083,8 @@ public class FloatingSearchView extends FrameLayout {
         if (mIsFocused) {
             mMenuView.hideIfRoomItems(false);
         }
-        mOnOverFlowMenuInflatedListener.onOverFlowMenuInflated(mMenuView);
+        if (mOnOverFlowMenuInflatedListener != null)
+            mOnOverFlowMenuInflatedListener.onOverFlowMenuInflated(mMenuView);
     }
 
     private int actionMenuAvailWidth() {

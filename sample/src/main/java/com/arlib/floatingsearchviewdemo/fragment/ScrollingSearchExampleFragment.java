@@ -19,6 +19,7 @@ import com.arlib.floatingsearchview.FloatingSearchView;
 import com.arlib.floatingsearchview.suggestions.SearchSuggestionsAdapter;
 import com.arlib.floatingsearchview.suggestions.model.SearchSuggestion;
 import com.arlib.floatingsearchview.util.Util;
+import com.arlib.floatingsearchview.util.view.MenuView;
 import com.arlib.floatingsearchviewdemo.R;
 import com.arlib.floatingsearchviewdemo.data.ColorSuggestion;
 import com.arlib.floatingsearchviewdemo.data.ColorWrapper;
@@ -59,6 +60,12 @@ public class ScrollingSearchExampleFragment extends BaseExampleFragment implemen
 
         setupDrawer();
         setupSearchBar();
+        mSearchView.setOnOverFlowMenuListener(new FloatingSearchView.OnOverFlowMenuInflatedListener() {
+            @Override
+            public MenuView onOverFlowMenuInflated(MenuView menuView) {
+                return menuView;
+            }
+        });
     }
 
     private void setupSearchBar() {
